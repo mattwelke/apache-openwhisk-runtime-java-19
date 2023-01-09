@@ -122,11 +122,11 @@ implementation platform('com.google.cloud:libraries-bom:26.2.0')
 implementation 'com.google.cloud:google-cloud-bigquery'
 ```
 
-For example, to use the dependency `com.google.cloud:google-cloud-bigquery` in your function, you would add the dependency to your `build.gradle` file using `compile` instead of `implementation`, like this:
+For example, to use the dependency `com.google.cloud:google-cloud-bigquery` in your function, you would add the dependency to your `build.gradle` file using `compileOnly` instead of `implementation`, like this:
 
 ```gradle
-compile platform('com.google.cloud:libraries-bom:26.2.0')
-compile 'com.google.cloud:google-cloud-bigquery'
+compileOnly platform('com.google.cloud:libraries-bom:26.2.0')
+compileOnly 'com.google.cloud:google-cloud-bigquery'
 ```
 
 If you want to use a dependency that is not included in the runtime, you must use `implementation`. Take note of the size of the dependency in the built JAR file, so that you stay within the size limit for deployed action artifacts set up in your OpenWhisk installation.
