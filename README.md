@@ -18,7 +18,7 @@ The instructions in this README are for Gradle users. Maven instructions are not
 
 To set up a project for a function, set up a Java project using the standard Maven layout using `gradle init`. Follow the steps to set up your project as a library (not as an application). This is because you'll be deploying a JAR that contains your class for your function (alongside any dependencies it needs that are not provided by the runtime), and your class will by dynamically loaded from the JAR by the runtime when it needs to. You won't be deploying an executable JAR.
 
-Copy the file `src/main/java/com/mattwelke/owr/java/Action.java` from this code base into your project so that it sets alongside your source code and is included in what is compiled. For example, if you choose the package name `com.myfunc` for your function code, and you choose the class name `MyFunction`, the `src` directory in your directory layout would look like this:
+Copy the file `src/main/java/com/mattwelke/owr/java/Action.java` from this code base into your project so that it sets alongside your source code and is included in what is compiled. For example, if you choose the package name `com.myfunc` for your function code, and you choose the class name `MyAction`, the `src` directory in your directory layout would look like this:
 
 ```
 └── src
@@ -30,7 +30,7 @@ Copy the file `src/main/java/com/mattwelke/owr/java/Action.java` from this code 
                 │       ├── java
                 │       │   └── Action.java
                 └── myfunc
-                    └── MyFunction.java
+                    └── MyAction.java
 ```
 
 *Note: In the future, this step may not be required because the `Action` class may be hosted as an open source Maven dependency.*
@@ -109,7 +109,7 @@ ibmcloud target -g $RESOURCE_GROUP
 ibmcloud fn namespace target $FUNCTIONS_NAMESPACE
 
 ibmcloud fn action update $ACTION_NAME $JAR_PATH \
-  --main "com.myfunc.MyFunction" \
+  --main "com.myfunc.MyAction" \
   --docker "mwelke/openwhisk-runtime-java-19:<tag>"
 ```
 
