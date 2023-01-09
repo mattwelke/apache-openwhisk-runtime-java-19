@@ -1,0 +1,30 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'application'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    // Extra dedependencies provided so actions don't need to provide them:
+
+    // https://github.com/googleapis/java-bigquery
+    implementation platform('com.google.cloud:libraries-bom:26.3.0')
+    implementation 'com.google.cloud:google-cloud-bigquery'
+}
+
+group = 'com.mattwelke.owr.java19'
+version = '1.0.0'
+description = 'apache-openwhisk-runtime-java-19'
+mainClassName = "com.mattwelke.owr.java19.Proxy"
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(19)
+    }
+}

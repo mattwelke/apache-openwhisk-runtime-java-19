@@ -1,0 +1,54 @@
+name: Build and Deploy
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
+      - '.github/workflows/codeql-analysis.yml'
+
+env:
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: mwelke/openwhisk-runtime-java-19
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      DOCKER_HUB_USER: mwelke
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log into registry Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ env.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      - name: Create tag
+        if: github.event_name != 'pull_request'
+        id: create_tag
+        run: |
+          TAG="${{ env.IMAGE_NAME }}:$(TZ="UTC (UTC)" printf "%(%Y%m%d%H%M)T")"
+          echo "Tag chosen: $TAG"
+          echo "::set-output name=tag::$TAG"
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.create_tag.outputs.tag }}
