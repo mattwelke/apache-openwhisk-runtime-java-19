@@ -14,7 +14,7 @@ dependencies {
     // Extra dedependencies provided so actions don't need to provide them:
 
     // https://github.com/googleapis/java-bigquery
-    implementation platform('com.google.cloud:libraries-bom:26.6.0')
+    implementation platform('com.google.cloud:libraries-bom:26.7.0')
     implementation 'com.google.cloud:google-cloud-bigquery'
 }
 
