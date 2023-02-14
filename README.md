@@ -85,7 +85,7 @@ public class MyAction extends Action {
 
 You deploy actions to this Java runtime the same way you deploy actions to runtimes from the Apache OpenWhisk project.
 
-Here is an example Bash script for deploying to IBM Cloud Functions from an automated context (such as a CI/CD system). Replace the values marked `<like_this>` with values for your function. Replace <tag> with the latest version of [the runtime image hosted on Docker Hub](https://hub.docker.com/repository/docker/mwelke/openwhisk-runtime-java-19/tags?page=1&ordering=last_updated).
+Here is an example Bash script for deploying to IBM Cloud Functions from an automated context (such as a CI/CD system). Replace the values marked `<like_this>` with values for your function. Replace <tag> with the latest version of [the runtime image hosted on Docker Hub](https://hub.docker.com/r/mwelke/openwhisk-runtime-java-19/tags).
 
 The script is meant to be run interactively from a machine that already has the `ibmcloud` CLI tool installed and authenticated (including the IBM Cloud Functions plugin). If you want to deploy from an automated context such as a GitHub Actions workflow, you will need to update it accordingly.
 
