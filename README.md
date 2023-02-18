@@ -1,6 +1,6 @@
 # apache-openwhisk-runtime-java-19
 
-A Java 19 runtime or Apache OpenWhisk. Derived from https://github.com/mattwelke/apache-openwhisk-runtime-java-18. The Java 18 version this is derived from has been used in production in a hobby project long enough to be considered production ready. Therefore, this can probably also be considered production ready.
+A Java 19 runtime for Apache OpenWhisk. Derived from https://github.com/mattwelke/apache-openwhisk-runtime-java-18. Has been used in production in a hobby project long enough to be considered production ready.
 
 Uses the default heap size and GC configuration for Eclipse Temurin Java 19.
 
